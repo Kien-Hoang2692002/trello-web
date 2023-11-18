@@ -9,6 +9,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <CssVarsProvider theme={theme}>
       <CssBaseline />
+      {/* <GlobalStyles styles={{ div: { color: "red" } }} /> */}
       <App />
     </CssVarsProvider>
   </React.StrictMode>

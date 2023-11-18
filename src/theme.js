@@ -8,6 +8,15 @@ const theme = extendTheme({
         primary: teal,
         secondary: deepOrange,
       },
+      // components: {
+      //   MuiCssBaseline: {
+      //     styleOverrides: `
+      //       div {
+      //         color: red;
+      //       }
+      //     `,
+      //   },
+      // },
     },
     dark: {
       palette: {
