@@ -1,35 +1,14 @@
-import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
-import ThreeDRotation from "@mui/icons-material/ThreeDRotation";
-import HomeIcon from "@mui/icons-material/Home";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutLined";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
 
-import { pink } from "@mui/material/colors";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import { useColorScheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Box from "@mui/material/Box";
-
-function ModeToggle() {
-  const { mode, setMode } = useColorScheme();
-  // const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-
-  return (
-    <Button
-      onClick={() => {
-        setMode(mode === "light" ? "dark" : "light");
-      }}
-    >
-      {mode === "light" ? "Turn dark" : "Turn light"}
-    </Button>
-  );
-}
+import Container from "@mui/material/Container";
 
 function ModeSelect() {
   const { mode, setMode } = useColorScheme();
@@ -70,38 +49,88 @@ function ModeSelect() {
 
 function App() {
   return (
-    <>
-      <ModeSelect />
-      <hr />
-      <ModeToggle />
-      <hr />
-      <div>Kiên Hoàng</div>
+    <Container maxWidth={false} disableGutters sx={{ height: "100vh" }}>
+      <Box
+        sx={{
+          backgroundColor: "primary.light",
+          width: "100%",
+          height: (theme) => theme.trello.appBarHeight,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <ModeSelect />
+      </Box>
 
-      <Typography variant="body2" color="text.secondary">
-        h1. Heading
-      </Typography>
-
-      <Button variant="text">Text</Button>
-      <Button variant="contained" color="success">
-        Contained
-      </Button>
-      <Button variant="outlined">Outlined</Button>
-
-      <br />
-      <AccessAlarmIcon />
-      <ThreeDRotation />
-      <HomeIcon />
-      <HomeIcon color="primary" />
-      <HomeIcon color="secondary" />
-      <HomeIcon color="success" />
-      <HomeIcon color="action" />
-      <HomeIcon color="disabled" />
-      <HomeIcon sx={{ color: pink[500] }} />
-    </>
+      <Box
+        sx={{
+          backgroundColor: "primary.dark",
+          width: "100%",
+          height: (theme) => theme.trello.boardBarHeight,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        Board Bar
+      </Box>
+      <Box
+        sx={{
+          backgroundColor: "primary.main",
+          width: "100%",
+          height: (theme) =>
+            `calc(100vh - ${theme.trello.appBarHeight} - ${theme.trello.boardBarHeight})`,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        Board Content
+      </Box>
+    </Container>
   );
 }
 
 export default App;
+
+// <hr />
+// <ModeToggle />
+// <hr />
+// <div>Kiên Hoàng</div>
+
+// <Typography variant="body2" color="text.secondary">
+//   h1. Heading
+// </Typography>
+
+// <Button variant="text">Text</Button>
+// <Button variant="contained" color="success">
+//   Contained
+// </Button>
+// <Button variant="outlined">Outlined</Button>
+
+// <br />
+// <AccessAlarmIcon />
+// <ThreeDRotation />
+// <HomeIcon />
+// <HomeIcon color="primary" />
+// <HomeIcon color="secondary" />
+// <HomeIcon color="success" />
+// <HomeIcon color="action" />
+// <HomeIcon color="disabled" />
+// <HomeIcon sx={{ color: pink[500] }} />
+
+// function ModeToggle() {
+//   const { mode, setMode } = useColorScheme();
+//   // const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
+//   return (
+//     <Button
+//       onClick={() => {
+//         setMode(mode === "light" ? "dark" : "light");
+//       }}
+//     >
+//       {mode === "light" ? "Turn dark" : "Turn light"}
+//     </Button>
+//   );
+// }
 
 // Bài trên lớp thầy Lâm
 // import { useState } from "react";
