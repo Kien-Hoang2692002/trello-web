@@ -10,6 +10,7 @@ import AvatarGroup from "@mui/material/AvatarGroup";
 import Tooltip from "@mui/material/Tooltip";
 import Button from "@mui/material/Button";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { capitalizeFirstLetter } from "~/utils/formatters";
 
 const MENU_STYLES = {
   color: "white",
@@ -25,7 +26,7 @@ const MENU_STYLES = {
   },
 };
 
-const BoardBar = () => {
+const BoardBar = ({ board }) => {
   return (
     <Box
       px={2}
@@ -46,13 +47,13 @@ const BoardBar = () => {
           sx={MENU_STYLES}
           icon={<DashboardIcon />}
           clickable
-          label="Kiên Hoàng MERN Stack Board"
+          label={board?.title}
         />
         <Chip
           sx={MENU_STYLES}
           icon={<VpnLockIcon />}
           clickable
-          label="Public/Private Workspaces"
+          label={capitalizeFirstLetter(board?.type)}
         />
         <Chip
           sx={MENU_STYLES}
