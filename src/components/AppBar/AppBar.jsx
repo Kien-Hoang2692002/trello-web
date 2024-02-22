@@ -3,7 +3,7 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 import AppsIcon from "@mui/icons-material/Apps";
 import SvgIcon from "@mui/material/SvgIcon";
-import ModeSelect from "~/components/ModeSelect";
+import ModeSelect from "~/components/ModeSelect/ModeSelect";
 import { ReactComponent as TrelloIcon } from "~/assets/trello.svg";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
