@@ -6,11 +6,11 @@ import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/s
 import theme from "./theme";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <CssVarsProvider theme={theme}>
-      <CssBaseline />
-      {/* <GlobalStyles styles={{ div: { color: "red" } }} /> */}
-      <App />
-    </CssVarsProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <CssVarsProvider theme={theme}>
+    <CssBaseline />
+    {/* <GlobalStyles styles={{ div: { color: "red" } }} /> */}
+    <App />
+  </CssVarsProvider>
+  // </React.StrictMode>
 );
