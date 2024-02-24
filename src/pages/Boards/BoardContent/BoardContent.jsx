@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import ListColumns from "./ListColumns/ListColumns";
 import { mapOrder } from "~/utils/sorts";
+import { generatePlaceholderCard } from "~/utils/formatters";
 import {
   DndContext,
   //PointerSensor,
@@ -18,7 +19,7 @@ import {
 } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 import { useEffect, useState, useCallback, useRef } from "react";
-import { cloneDeep } from "lodash";
+import { cloneDeep, isEmpty } from "lodash";
 import Column from "./ListColumns/Column/Column";
 import Card from "./ListColumns/Column/ListCards/Card/Card";
 
@@ -107,6 +108,11 @@ const BoardContent = ({ board }) => {
           (card) => card._id !== activeDraggingCardId
         );
 
+        // Thêm placeholderCard nếu Column bị rỗng
+        if (isEmpty(nextActiveColumn.cards)) {
+          nextActiveColumn.cards = [generatePlaceholderCard(nextActiveColumn)];
+        }
+
         // Cập nhật lại mảng cardOrderIds cho chuẩn dữ liệu
         nextActiveColumn.cardOrderIds = nextActiveColumn.cards.map(
           (card) => card._id
@@ -129,6 +135,12 @@ const BoardContent = ({ board }) => {
           0,
           rebuild_activeDraggingCardData
         );
+
+        // Xóa placeholderCard nếu nó đã tồn tại
+        nextOverColumn.cards = nextOverColumn.cards.filter(
+          (card) => !card.FE_PlaceholderCard
+        );
+
         // Cập nhật lại mảng cardOrderIds
         nextOverColumn.cardOrderIds = nextOverColumn.cards.map(
           (card) => card._id
